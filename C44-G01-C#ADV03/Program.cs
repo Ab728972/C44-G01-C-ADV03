@@ -1,4 +1,6 @@
-﻿namespace C44_G01_C_ADV03
+﻿using System.Diagnostics;
+
+namespace C44_G01_C_ADV03
 {
     internal class Program
     {
@@ -17,7 +19,19 @@
             public decimal Price { get; set; }
             #endregion
         }
-        #endregion 
+        #endregion
+        #region Constructor
+        public Book(string isbn, string title, string[] authors, DateTime publicationDate, decimal price)
+        {
+            ISBN = isbn;
+            Title = title;
+            Authors = authors;
+            PublicationDate = publicationDate;
+            Price = price;
+        }
+        #endregion
+
+       
     }
 }
 
