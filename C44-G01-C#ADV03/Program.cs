@@ -37,6 +37,37 @@ namespace C44_G01_C_ADV03
                    $"Publication Date: {PublicationDate.ToShortDateString()}, Price: {Price:C}";
         }
         #endregion
+        #region BookFunctions Class
+        public class BookFunctions
+        {
+            #region Static Methods
+            public static string GetTitle(Book b)
+            {
+                return b.Title;
+            }
+
+            public static string GetAuthors(Book b)
+            {
+                return string.Join(", ", b.Authors);
+            }
+
+            public static string GetPrice(Book b)
+            {
+                return $"{b.Price:C}";
+            }
+
+            public static string GetISBN(Book b)
+            {
+                return b.ISBN;
+            }
+
+            public static string GetPublicationDate(Book b)
+            {
+                return b.PublicationDate.ToShortDateString();
+            }
+            #endregion
+        }
+        #endregion
 
 
     }
