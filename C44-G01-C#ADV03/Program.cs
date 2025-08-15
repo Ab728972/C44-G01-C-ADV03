@@ -68,6 +68,34 @@ namespace C44_G01_C_ADV03
             #endregion
         }
         #endregion
+        #region LibraryEngine Class
+        public class LibraryEngine
+        {
+            #region User-defined Delegate
+            public delegate string BookDelegate(Book b);
+            #endregion
+
+            #region ProcessBooks Methods
+            // 1. Using user-defined delegate
+            public static void ProcessBooks(List<Book> bList, BookDelegate f)
+            {
+                foreach (Book b in bList)
+                {
+                    Console.WriteLine(f(b));
+                }
+            }
+
+            // 2. Using built-in Func delegate
+            public static void ProcessBooks(List<Book> bList, Func<Book, string> f)
+            {
+                foreach (Book b in bList)
+                {
+                    Console.WriteLine(f(b));
+                }
+            }
+            #endregion
+        }
+        #endregion
 
 
     }
