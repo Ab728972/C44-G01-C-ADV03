@@ -30,8 +30,15 @@ namespace C44_G01_C_ADV03
             Price = price;
         }
         #endregion
+        #region Methods
+        public override string ToString()
+        {
+            return $"ISBN: {ISBN}, Title: {Title}, Authors: {string.Join(", ", Authors)}, " +
+                   $"Publication Date: {PublicationDate.ToShortDateString()}, Price: {Price:C}";
+        }
+        #endregion
 
-       
+
     }
 }
 
