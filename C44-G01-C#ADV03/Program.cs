@@ -6,7 +6,40 @@ namespace C44_G01_C_ADV03
     {
         static void Main(string[] args)
         {
+            #region Sample Data
+            List<Book> books = new List<Book>
+            {
+                new Book("123-456", "C# Programming", new string[] { "John Doe", "Jane Smith" }, new DateTime(2022, 1, 15), 49.99m),
+                new Book("789-012", "Advanced C#", new string[] { "Alice Johnson" }, new DateTime(2023, 5, 20), 59.99m),
+                new Book("345-678", ".NET Core", new string[] { "Bob Brown", "Charlie Davis", "Eve Wilson" }, new DateTime(2021, 11, 30), 39.99m)
+            };
+            #endregion
 
+            Console.WriteLine("Processing books using different delegate approaches:");
+            Console.WriteLine("=================================================");
+
+            #region Delegate Demonstrations
+            // 1. Using user-defined delegate
+            Console.WriteLine("\n1. Using user-defined delegate (GetTitle):");
+            LibraryEngine.BookDelegate titleDelegate = BookFunctions.GetTitle;
+            LibraryEngine.ProcessBooks(books, titleDelegate);
+
+            // 2. Using built-in Func delegate
+            Console.WriteLine("\n2. Using built-in Func delegate (GetAuthors):");
+            LibraryEngine.ProcessBooks(books, BookFunctions.GetAuthors);
+
+            // 3. Using anonymous method for GetISBN
+            Console.WriteLine("\n3. Using anonymous method (GetISBN equivalent):");
+            LibraryEngine.ProcessBooks(books, delegate (Book b) { return b.ISBN; });
+
+            // 4. Using lambda expression for GetPublicationDate
+            Console.WriteLine("\n4. Using lambda expression (GetPublicationDate equivalent):");
+            LibraryEngine.ProcessBooks(books, b => b.PublicationDate.ToShortDateString());
+
+            // Additional demonstration with price
+            Console.WriteLine("\nBonus: Using lambda expression for price:");
+            LibraryEngine.ProcessBooks(books, b => $"Price: {b.Price:C}");
+            #endregion
         }
         #region Book Class
         public class Book
@@ -96,6 +129,7 @@ namespace C44_G01_C_ADV03
             #endregion
         }
         #endregion
+
 
 
     }
